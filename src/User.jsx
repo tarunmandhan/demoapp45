@@ -1,10 +1,16 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 
 const User = () => {
   const { fname, lname } = useParams();
   const abc = useLocation();
-  console.log(abc);
+  const xyz = useNavigate();
+  console.log(xyz);
+
+  const goToContact = () => {
+    xyz("/Contact");
+  };
+
   return (
     <>
       <h1>
@@ -20,6 +26,15 @@ const User = () => {
           Click here
         </button>
       ) : null}
+
+      <button onClick={() => goToContact()}>go to Contact page</button>
+      <button
+        onClick={() => {
+          xyz(-1);
+        }}
+      >
+        go back
+      </button>
     </>
   );
 };
